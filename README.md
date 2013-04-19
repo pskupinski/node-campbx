@@ -1,7 +1,7 @@
 node-campbx
 =====
 
-An unofficial node.js client for the [camp bx api](https://campbx.com/api.php) supporting only public market data api methods at the moment.
+An unofficial node.js client for the [camp bx api](https://campbx.com/api.php) including public market data api methods.
 
 ## Usage
 
