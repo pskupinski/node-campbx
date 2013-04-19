@@ -7,9 +7,13 @@ An unofficial node.js client for the [camp bx api](https://campbx.com/api.php) s
 
 ```javascript
 var CampBX = require('campbx'),
-    campBX = new CampBX();
+    campBXTrade = new CampBX("YourUsername", "YourPassword"),
+    // No need to provide keys if you're only using the public api methods.
+    campBXPublic = new CampBX();
 
-campBX.depth(function(err, data) {
+// Public API method call
+// Note: Could use "campBXTrade" here as well.
+campBX.ticker(function(err, data) {
   if(err) {
     throw err;
   }
@@ -17,7 +21,8 @@ campBX.depth(function(err, data) {
   console.log(data);
 });
 
-campBX.ticker(function(err, data) {
+// Trade API method call.
+campBX.myFunds(function(err, data) {
   if(err) {
     throw err;
   }

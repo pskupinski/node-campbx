@@ -19,6 +19,10 @@ var CampBX = function(username, password) {
   };
 
   self.makeRequest = function(method, params, callback) {
+    if(!self.username || !self.password) {
+      throw "Must provide username and password to use the trade API.";
+    }
+
     params.user = self.username;
     params.pass = self.password;
     request({ url: self.url + method, method: "POST", form: params }, function(err, response, body) {
@@ -71,7 +75,7 @@ var CampBX = function(username, password) {
   };
 
   self.tradeCancel = function(type, orderId, callback) {
-    self.makeRequest("tradecancel.php", { "Type": type, "OrderId": orderId }, callback);
+    self.makeRequest("tradecancel.php", { "Type": type, "OrderID": orderId }, callback);
   };
 
   self.tradeEnter = function(tradeMode, quantity, price, callback) {
