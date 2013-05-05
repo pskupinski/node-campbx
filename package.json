@@ -1,13 +1,13 @@
 {
   "name": "campbx",
   "description": "campbx.com API client for node.js",
-  "homepage": "https://github.com/scud43/node-campbx",
+  "homepage": "https://github.com/pskupinski/node-campbx",
   "keywords": ["btc", "bitcoin", "campbx"],
   "author": "Preston Skupinski",
   "licenses": [
     {
       "type": "ISC",
-      "url": "https://github.com/scud43/node-campbx/blob/master/LICENSE.txt"
+      "url": "https://github.com/pskupinski/node-campbx/blob/master/LICENSE.txt"
     }
   ],
   "dependencies": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/scud43/node-campbx"
+    "url": "https://github.com/pskupinski/node-campbx"
   },
   "main": "campbx.js",
   "engines": {

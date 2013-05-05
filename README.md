@@ -33,8 +33,8 @@ campBX.myFunds(function(err, data) {
 
 ## Reference
 
-A method-by-method [reference](https://github.com/scud43/node-campbx/wiki/API-Reference) is available on the wiki.
+A method-by-method [reference](https://github.com/pskupinski/node-campbx/wiki/API-Reference) is available on the wiki.
 
 ## License
 
-This module is [ISC licensed](https://github.com/scud43/node-campbx/blob/master/LICENSE.txt).
+This module is [ISC licensed](https://github.com/pskupinski/node-campbx/blob/master/LICENSE.txt).
