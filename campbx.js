@@ -16,7 +16,7 @@ var CampBX = function(username, password) {
       try {
         callback(null, JSON.parse(body));
       } catch (err) {
-        callback(err);
+        callback(new Error(err ? err : response.statusCode));
       }
       
     });
@@ -41,7 +41,7 @@ var CampBX = function(username, password) {
         if (result.error) { return callback(result.error); }
         callback(null, result);
       } catch (err) {
-        callback(err);
+        callback(new Error(err ? err : response.statusCode));
       }
     });
   };
