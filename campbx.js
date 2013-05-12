@@ -37,7 +37,7 @@ var CampBX = function(username, password) {
 
       try {
         var result = JSON.parse(body);
-        if (result.Error) { return callback(new Error(result.Error ? result.Error : response.statusCode)); }
+        if (result.Error) { return callback(new Error(result.Error)); }
         callback(null, result);
       } catch (err) {
         callback(new Error(err ? err : response.statusCode));
