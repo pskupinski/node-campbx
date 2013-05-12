@@ -10,36 +10,38 @@ var CampBX = function(username, password) {
   self.makePublicRequest = function(method, callback) {
     request(self.publicUrl + method, function(err, response, body) {
       if(err || response.statusCode !== 200) {
-        callback(new Error(err ? err : response.statusCode));
+        callback(err ? err : response.statusCode);
         return;
       }
-
-      callback(null, JSON.parse(body));
+      try {
+        callback(false, JSON.parse(body));
+      } catch (err) {
+        callback(err);
+      }
+      
     });
   };
 
   self.makeRequest = function(method, params, callback) {
     if(!self.username || !self.password) {
-      callback(new Error("Must provide username and password to use the trade API."));
-      return;
+      throw "Must provide username and password to use the trade API.";
     }
 
     params.user = self.username;
     params.pass = self.password;
     request({ url: self.url + method, method: "POST", form: params }, function(err, response, body) {
       if(err || response.statusCode !== 200) {
-        callback(new Error(err ? err : response.statusCode));
+        callback(err ? err : response.statusCode);
         return;
       }
 
-      var result = JSON.parse(body);
-
-      if(result.Error) {
-        callback(new Error(result.Error));
-        return;
+      try {
+        var result = JSON.parse(body);
+        if (result.error) { return callback(result.error); }
+        callback(false, result);
+      } catch (err) {
+        callback(err);
       }
-
-      callback(null, result);
     });
   };
 
