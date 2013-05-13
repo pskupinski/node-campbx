@@ -10,37 +10,37 @@ var CampBX = function(username, password) {
   self.makePublicRequest = function(method, callback) {
     request(self.publicUrl + method, function(err, response, body) {
       if(err || response.statusCode !== 200) {
-        callback(new Error(err ? err : response.statusCode));
-        return;
+        return callback(new Error(err ? err : response.statusCode));
       }
       try {
         callback(null, JSON.parse(body));
       } catch (err) {
-        callback(new Error(err ? err : response.statusCode));
+        callback(new Error(err));
       }
     });
   };
 
   self.makeRequest = function(method, params, callback) {
     if(!self.username || !self.password) {
-      callback(new Error("Must provide username and password to use the trade API."));
-      return;
+      return callback(new Error("Must provide username and password to use the trade API."));
     }
 
     params.user = self.username;
     params.pass = self.password;
     request({ url: self.url + method, method: "POST", form: params }, function(err, response, body) {
       if(err || response.statusCode !== 200) {
-        callback(new Error(err ? err : response.statusCode));
-        return;
+        return callback(new Error(err ? err : response.statusCode));
       }
 
       try {
         var result = JSON.parse(body);
-        if (result.Error) { return callback(new Error(result.Error)); }
+        // The existence of an "Error" key signifies that something went wrong.
+        if (result.Error) {
+          return callback(new Error(result.Error));
+        }
         callback(null, result);
       } catch (err) {
-        callback(new Error(err ? err : response.statusCode));
+        callback(new Error(err));
       }
     });
   };
