@@ -13,8 +13,11 @@ var CampBX = function(username, password) {
         callback(new Error(err ? err : response.statusCode));
         return;
       }
-
-      callback(null, JSON.parse(body));
+      try {
+        callback(null, JSON.parse(body));
+      } catch (err) {
+        callback(new Error(err ? err : response.statusCode));
+      }
     });
   };
 
@@ -32,14 +35,13 @@ var CampBX = function(username, password) {
         return;
       }
 
-      var result = JSON.parse(body);
-
-      if(result.Error) {
-        callback(new Error(result.Error));
-        return;
+      try {
+        var result = JSON.parse(body);
+        if (result.Error) { return callback(new Error(result.Error)); }
+        callback(null, result);
+      } catch (err) {
+        callback(new Error(err ? err : response.statusCode));
       }
-
-      callback(null, result);
     });
   };
 
