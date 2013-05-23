@@ -12,11 +12,19 @@ var CampBX = function(username, password) {
       if(err || response.statusCode !== 200) {
         return callback(new Error(err ? err : response.statusCode));
       }
+
+      var result;
       try {
-        callback(null, JSON.parse(body));
+        result = JSON.parse(body);
       } catch (err) {
-        callback(new Error(err));
+        return callback(new Error(err));
       }
+
+      if(result.Error) {
+        return callback(new Error(result.Error));
+      }
+
+      callback(null, result);
     });
   };
 
@@ -32,16 +40,18 @@ var CampBX = function(username, password) {
         return callback(new Error(err ? err : response.statusCode));
       }
 
+      var result;
       try {
-        var result = JSON.parse(body);
-        // The existence of an "Error" key signifies that something went wrong.
-        if (result.Error) {
-          return callback(new Error(result.Error));
-        }
-        callback(null, result);
-      } catch (err) {
-        callback(new Error(err));
+        result = JSON.parse(body);
+      } catch(error) {
+        return callback(new Error(error));
       }
+
+      if(result.Error) {
+        return callback(new Error(result.Error));
+      }
+
+      callback(null, result);
     });
   };
 

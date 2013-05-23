@@ -19,7 +19,7 @@
   },
   "main": "campbx.js",
   "engines": {
-    "node": "~0.10"
+    "node": ">=0.8"
   },
-  "version": "0.0.5"
+  "version": "0.0.6"
 }
