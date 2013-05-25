@@ -3,6 +3,14 @@ node-campbx
 
 An unofficial node.js client for the [camp bx api](https://campbx.com/api.php) including public market data api methods.
 
+## Installation
+
+node-campbx is available as `campbx` on npm.
+
+```
+npm install campbx
+```
+
 ## Usage
 
 ```javascript
