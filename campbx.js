@@ -2,7 +2,7 @@ var request = require("request");
 
 var CampBX = function(username, password) {
   var self = this;
-  self.publicUrl = "http://campbx.com/api/";
+  self.publicUrl = "https://campbx.com/api/";
   self.url = "https://campbx.com/api/";
   self.username = username;
   self.password = password;
