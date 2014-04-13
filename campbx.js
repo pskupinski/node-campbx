@@ -85,10 +85,6 @@ var CampBX = function(username, password, params) {
     self.makeRequest("getbtcaddr.php", {}, callback);
   };
 
-  self.sendInstant = function(CBXCode, btcAmount, callback) {
-    self.makeRequest("sendinstant.php", { "CBXCode":CBXCode, "BTCAmt": btcAmount }, callback);
-  };
-
   self.sendBtc = function(btcTo, btcAmount, callback) {
     self.makeRequest("sendbtc.php", { "BTCTo": btcTo, "BTCAmt": btcAmount }, callback);
   };
