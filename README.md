@@ -16,6 +16,8 @@ npm install campbx
 ```javascript
 var CampBX = require('campbx'),
     campBXTrade = new CampBX("YourUsername", "YourPassword"),
+    // To use the testnet version of CampBX's api
+    campBXTestNet = new CampBX("YourUsername", "YourPassword", { testnet: true }),
     // No need to provide keys if you're only using the public api methods.
     campBXPublic = new CampBX();
 
