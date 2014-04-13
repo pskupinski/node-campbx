@@ -106,7 +106,7 @@ CampBX.prototype.tradeAdv = function(tradeMode, price, quantity, optionalFields,
     params[k] = optionalFields[k];
   }
 
-  self.makeRequest("tradeadv.php", params, callback);
+  this.makeRequest("tradeadv.php", params, callback);
 };
 
 module.exports = CampBX;
