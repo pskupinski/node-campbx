@@ -16,13 +16,13 @@ npm install campbx
 ```javascript
 var CampBX = require('campbx'),
     campBXTrade = new CampBX("YourUsername", "YourPassword"),
-    // To use the testnet version of CampBX's api
-    campBXTestNet = new CampBX("YourUsername", "YourPassword", { testnet: true }),
+    // To use the testnet sandbox version of CampBX's api (https://testnet.campbx.com/)
+    campBXTestNet = new CampBX("YourTestNetUsername", "YourTestNetPassword", { testnet: true }),
     // No need to provide keys if you're only using the public api methods.
     campBXPublic = new CampBX();
 
 // Public API method call
-// Note: Could use "campBXTrade" here as well.
+// Note: Could use "campBXTrade" or "campBXTestNet" here as well.
 campBX.ticker(function(err, data) {
   if(err) {
     throw err;
@@ -31,7 +31,7 @@ campBX.ticker(function(err, data) {
   console.log(data);
 });
 
-// Trade API method call.
+// Trade API method call, use "campBXTestNet" here to use your testnet sandbox account instead.
 campBX.myFunds(function(err, data) {
   if(err) {
     throw err;
