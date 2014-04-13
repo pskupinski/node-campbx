@@ -2,13 +2,12 @@ var request = require("request");
 
 var CampBX = function(username, password) {
   var self = this;
-  self.publicUrl = "https://campbx.com/api/";
   self.url = "https://campbx.com/api/";
   self.username = username;
   self.password = password;
 
   self.makePublicRequest = function(method, callback) {
-    request(self.publicUrl + method, function(err, response, body) {
+    request(self.url + method, function(err, response, body) {
       if(err || response.statusCode !== 200) {
         return callback(new Error(err ? err : response.statusCode));
       }
