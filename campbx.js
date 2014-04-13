@@ -1,10 +1,17 @@
 var request = require("request");
 
-var CampBX = function(username, password) {
+var CampBX = function(username, password, params) {
   var self = this;
-  self.url = "https://campbx.com/api/";
+
   self.username = username;
   self.password = password;
+
+  if (params && params.testnet) {
+    self.url = "https://testnet.campbx.com/api/";
+  } else {
+    self.url = "https://campbx.com/api/";
+  }
+
 
   self.makePublicRequest = function(method, callback) {
     request(self.url + method, function(err, response, body) {
